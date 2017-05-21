@@ -32,15 +32,14 @@ function getJson(timestamp) {
         
         
     } else {
-                // if input does not begin with NUMBERS, create a Date object without parsing it
-
+// if input does not begin with NUMBERS, create a Date object without parsing it
         date = new Date(timestamp)
         
         if (!isNaN(date.getTime())) {
             
          //if Date object is valid, get values, pass to JSON
 
-        result.unix = parseInt(timestamp);
+        result.unix = date.getTime();
         result.natural = months[date.getMonth()]+' '+date.getDate() + ','+date.getFullYear() 
         }
     }
