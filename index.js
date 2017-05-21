@@ -39,7 +39,7 @@ function getJson(timestamp) {
             
          //if Date object is valid, get values, pass to JSON
 
-        result.unix = date.getTime();
+        result.unix = date.getSeconds();
         result.natural = months[date.getMonth()]+' '+date.getDate() + ','+date.getFullYear() 
         }
     }
