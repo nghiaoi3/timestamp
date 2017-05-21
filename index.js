@@ -19,21 +19,30 @@ function getJson(timestamp) {
         
     }
     if (!isNaN(parseInt(timestamp))) {
-        // if timestamp is a NUMBER string, parse it to NUMBER, and create a Date object
+        // if input begin with NUMBERS, create a Date object
         date = new Date(parseInt(timestamp*1000))
         
-        //  values of result JSON
+        if (!isNaN(date.getTime())) {
+            
+            //if Date object is valid, get values, pass to JSON
 
-        result.unix = date.getTime();
+        result.unix = parseInt(timestamp);
         result.natural = months[date.getMonth()]+' '+date.getDate() + ','+date.getFullYear() 
+        }
+        
         
     } else {
-        // if timestamp isnot a NUMBER string, create a Date object without parsing it
+                // if input does not begin with NUMBERS, create a Date object without parsing it
+
         date = new Date(timestamp)
         
-                //  values of result JSON
-        result.unix = date.getTime();
+        if (!isNaN(date.getTime())) {
+            
+         //if Date object is valid, get values, pass to JSON
+
+        result.unix = parseInt(timestamp);
         result.natural = months[date.getMonth()]+' '+date.getDate() + ','+date.getFullYear() 
+        }
     }
     return result;
 }
